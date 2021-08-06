@@ -12,7 +12,8 @@
    ========================================================================== */
 
 html {
-  color: #222;
+  background-color: rgb(60,60,75);
+  color: rgb(230,230,230);
   font-size: 1em;
   line-height: 1.4;
 }
@@ -239,6 +240,8 @@ textarea {
    * Printing Tables:
    * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
    */
+
+   
   thead {
     display: table-header-group;
   }
@@ -271,8 +274,8 @@ h1, h4 {
   text-align: center;
 }
 
-/* child class centered and half the screen */
-.child {
+/* champ_grid class centered and half the screen */
+.champ_grid {
   margin-left: auto;
   margin-right: auto;
   /* (#champ_width * columns) + ((margin + 4) * (#champ_width - 1)) */
@@ -280,7 +283,21 @@ h1, h4 {
 }
 
 /* champion icons at half width and 5px margin */
-#champ {
+#champ_icon {
+  margin: 2px 0px;
+  width: 60px;
+  height: auto;
+}
+
+/* mouesover champ icon shows beige border */
+#champ_icon:hover {
+  border-style: none;
+  outline: beige;
+  outline-style: solid;
+  outline-width: 2px; 
+}
+
+#blank_icon {
   margin: 2px 0px;
   width: 60px;
   height: auto;
