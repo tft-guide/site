@@ -1,0 +1,119 @@
+/* dark backgrounds are schweet */
+html {
+    background-color:#3c3c4b;
+    color: rgb(230,230,230);
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* make a pretty horizontal rule */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/* all h1 headers center-aligned */
+h1, h4 {
+    text-align: center;
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* clean up non-column stuff */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Default */
+[class*="col-"] {
+    width: 100%;
+}
+
+/* Small Phones */
+@media only screen and (max-width: 768px) {
+    .col-s {width: 100%;}
+}
+ 
+/* Big Phones */
+@media only screen and (min-width: 768px) {
+    .col-m-1 {width: 12.5%;}
+    .col-m-2 {width: 25%;}
+    .col-m-3 {width: 37.5%;}
+    .col-m-4 {width: 50%;}
+    .col-m-5 {width: 62.5%;}
+    .col-m-6 {width: 75%;}
+    .col-m-7 {width: 87.5%;}
+    .col-m-8 {width: 100%;}
+}
+ 
+/* Standard */
+@media only screen and (min-width: 1080px) {
+    .col-1 {width: 12.5%;}
+    .col-2 {width: 25%;}
+    .col-3 {width: 37.5%;}
+    .col-4 {width: 50%;}
+    .col-5 {width: 62.5%;}
+    .col-6 {width: 75%;}
+    .col-7 {width: 87.5%;}
+    .col-8 {width: 100%;}
+}
+ 
+/* Fancy */
+@media only screen and (min-width: 1200px) {
+    .col-xl-1 {width: 12.5%;}
+    .col-xl-2 {width: 25%;}
+    .col-xl-3 {width: 37.5%;}
+    .col-xl-4 {width: 50%;}
+    .col-xl-5 {width: 62.5%;}
+    .col-xl-6 {width: 75%;}
+    .col-xl-7 {width: 87.5%;}
+    .col-xl-8 {width: 100%;}
+} 
+
+
+
+
+
+
+
+
+
+/* champ_grid class centered and half the screen */
+.champ_grid {
+    margin-left: auto;
+    margin-right: auto;
+    /* (#champ_width * columns) + ((margin + 4) * (#champ_width - 1)) */
+    width: 524px; 
+}
+  
+/* champion icons at half width and 5px margin */
+#champ_icon {
+    margin: 0px 1px;
+    width: 60px;
+    height: auto;
+}
+  
+/* mouesover champ icon shows beige border */
+#champ_icon:hover {
+    border-style: none;
+    outline: beige;
+    outline-style: solid;
+    outline-width: 2px; 
+}
+  
+#blank_icon {
+    margin: 0px 1px;
+    width: 60px;
+    height: auto;
+}
