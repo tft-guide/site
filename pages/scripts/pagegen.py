@@ -9,6 +9,9 @@ tftSet = 5
 indent = "    "
 championList = list()
 # Directories
+htmlRootProd = "https://tft.guide/"
+htmlRootDev = "file:///C:/Development/tft.guide/repo/"
+htmlRoot = htmlRootDev
 rootDir = "../../"
 htmlDir = "pages/"
 templateDir = htmlDir + "templates/"
@@ -20,17 +23,20 @@ iconDir = imgDir + "champions/icons/"
 summonDir = iconDir + "summons/"
 # Page-specific Stuff
 blankImage = "CHAMP_BLANK.png"
-header = open(rootDir + templateDir + "header.html", "r") # default page header for all pages
+header = open(rootDir + templateDir + "header.html", "r").read()
+header = header.replace("[rootDir]", htmlRoot)
+menu = open(rootDir + templateDir + "menu_bar.html", "r").read()
+menu = menu.replace("[rootDir]", htmlRoot)
 
 
 # ------------------ Generating index.html ------------------
 with open(rootDir + "indexTest.html", "w") as indexPage:
     # start with the header
-    indexPage.write(header.read()) 
+    indexPage.write(header) 
     # body start
     indexPage.write("\n\n" + indent + "<body>\n") 
     # add in the menu bar
-    indexPage.write(open(rootDir + templateDir + "menu_bar.html", "r").read() + "\n\n")
+    indexPage.write(menu + "\n\n")
     # start the champion icon grid
     indexPage.write(2*indent + "<div class=\"row\">\n")
     indexPage.write(3*indent + "<div class=\"col-8\">\n")
@@ -86,6 +92,17 @@ with open(rootDir + "indexTest.html", "w") as indexPage:
 
 # ------------------ Generating Champion Pages ------------------
 for champion in championList:
-    with open(rootDir + "indexTest.html", "w") as indexPage:
+    with open(rootDir + championDir + "TFT" + str(tftSet) + "_" + champion + ".html", "w") as champPage:
+        # start with the header
+        champPage.write(header) 
+        # body start
+        champPage.write("\n\n" + indent + "<body>\n") 
+        # add in the menu bar
+        champPage.write(menu + "\n\n")
+        # champion portrait
+        champPage.write("")
+        # Rest of the owl
 
+        # page end
+        champPage.write(indent + "</body>\n</html>") 
 # ------------------ Generating Item Pages ------------------
