@@ -8,10 +8,11 @@ import math
 tftSet = 5
 indent = "    "
 championList = list()
+prefix = "TFT" + str(tftSet) + "_"
 # Directories
 htmlRootProd = "https://tft.guide/"
 htmlRootDev = "file:///C:/Development/tft.guide/repo/"
-htmlRoot = htmlRootDev
+htmlRoot = htmlRootProd
 rootDir = "../../"
 htmlDir = "pages/"
 templateDir = htmlDir + "templates/"
@@ -30,7 +31,7 @@ menu = menu.replace("[rootDir]", htmlRoot)
 
 
 # ------------------ Generating index.html ------------------
-with open(rootDir + "indexTest.html", "w") as indexPage:
+with open(rootDir + "index.html", "w") as indexPage:
     # start with the header
     indexPage.write(header) 
     # body start
@@ -46,15 +47,20 @@ with open(rootDir + "indexTest.html", "w") as indexPage:
     for file in os.listdir(rootDir + iconDir):
         filename = os.fsdecode(file)
         champion = ""
-        if filename.startswith("TFT" + str(tftSet)) and filename.endswith(".png"):
+        if filename.startswith(prefix) and filename.endswith(".png"):
             # pull out the champion name
             sansExtension = filename.split('.')[0]
             champion = sansExtension.split('_')[1]
-            # write out the html for the icon
+            # add page link
             indexPage.write(5*indent)
+            indexPage.write("<a href=\"" + championDir + prefix + champion + ".html" + "\">\n")
+            # write out the html for the icon
+            indexPage.write(6*indent)
             indexPage.write("<img src=\"" + iconDir + filename + "\" ")
             indexPage.write("id=\"champ_icon\" alt=\"" + champion + " ")
             indexPage.write("Icon\" title=\"" + champion + "\">\n")
+            indexPage.write(5*indent)
+            indexPage.write("</a>\n")
             # add to the champion list
             championList.append(champion)
     
@@ -81,6 +87,7 @@ with open(rootDir + "indexTest.html", "w") as indexPage:
         indexPage.write("<img src=\"" + summonDir + filename + "\" ")
         indexPage.write("id=\"champ_icon\" alt=\"" + champion + " ")
         indexPage.write("Icon\" title=\"" + champion + "\">\n")
+        # TODO: Figure out a way to auto-add page links for summons
 
     # close out the champion grid
     indexPage.write(4*indent + "</div>\n")
@@ -92,7 +99,7 @@ with open(rootDir + "indexTest.html", "w") as indexPage:
 
 # ------------------ Generating Champion Pages ------------------
 for champion in championList:
-    with open(rootDir + championDir + "TFT" + str(tftSet) + "_" + champion + ".html", "w") as champPage:
+    with open(rootDir + championDir + prefix + champion + ".html", "w") as champPage:
         # start with the header
         champPage.write(header) 
         # body start
@@ -100,9 +107,10 @@ for champion in championList:
         # add in the menu bar
         champPage.write(menu + "\n\n")
         # champion portrait
-        champPage.write("")
+        champPage.write(2*indent)
+        champPage.write("<img src=\"" + rootDir + portraitDir + prefix + champion + ".png\">\n")
         # Rest of the owl
-
+        
         # page end
         champPage.write(indent + "</body>\n</html>") 
 # ------------------ Generating Item Pages ------------------
