@@ -107,10 +107,14 @@ for champion in championList:
         # add in the menu bar
         champPage.write(menu + "\n\n")
         # champion portrait
-        champPage.write(2*indent)
+        champPage.write(2*indent + "<div class=\"row\">\n")
+        champPage.write(3*indent + "<div class=\"col-8\">\n")
         champPage.write("<img src=\"" + rootDir + portraitDir + prefix + champion + ".png\">\n")
         # Rest of the owl
         
+        # close out divs
+        champPage.write(3*indent + "</div>\n")
+        champPage.write(2*indent + "</div>\n")
         # page end
         champPage.write(indent + "</body>\n</html>") 
 # ------------------ Generating Item Pages ------------------

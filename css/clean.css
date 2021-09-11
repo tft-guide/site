@@ -28,6 +28,10 @@ h1, h4 {
     box-sizing: border-box;
 }
 
+.row {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 /* clean up non-column stuff */
 .row::after {
     content: "";
